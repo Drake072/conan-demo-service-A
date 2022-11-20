@@ -6,7 +6,7 @@
 
 ### Build and install to local cache
 
-`conan create . -pr:b macos_x86_release`
+`conan create -pr:b macos_x86_release .`
 
 ###  Conan Profiles
 
