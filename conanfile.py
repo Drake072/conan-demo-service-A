@@ -43,7 +43,7 @@ class LoggerConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("lib/*")
+        self.copy("*")
 
     def package_info(self):
         # self.cpp_info.libs = ["serviceA"]

@@ -29,4 +29,5 @@ add_custom_target(combined ALL
     )
 
 
-INSTALL (FILES "include/serviceA.h" DESTINATION ${CMAKE_BINARY_DIR}/include)
+INSTALL (FILES "include/serviceA.h" DESTINATION ${CMAKE_BINARY_DIR}/install/include)
+INSTALL (FILES "${CMAKE_BINARY_DIR}/lib/libserviceA.a" DESTINATION ${CMAKE_BINARY_DIR}/install/lib)
