@@ -5,7 +5,3 @@
 void serviceA() {
     info("ServiceA method invoked");
 }
-
-int main() {
-    serviceA();
-}
