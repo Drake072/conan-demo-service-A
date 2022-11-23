@@ -27,16 +27,16 @@ MESSAGE (STATUS "----------------------- CMAKE_LIBRARY_OUTPUT_DIRECTORY: ${CMAKE
 
 
 add_custom_target(combined ALL 
-    COMMAND rm -rf ${CMAKE_BINARY_DIR}/tmp
-    COMMAND mkdir ${CMAKE_BINARY_DIR}/tmp
-    COMMAND mv   "${CMAKE_BINARY_DIR}/libserviceA.a" "${CMAKE_BINARY_DIR}/tmp/libserviceAUnbundled.a"
-    COMMAND rm -f *.o
-    COMMAND ${CMAKE_AR} x "${CMAKE_BINARY_DIR}/tmp/libserviceAUnbundled.a"
-    COMMAND ${CMAKE_AR} x "${logger_LIB_DIRS}/liblogger.a"
-    COMMAND ${CMAKE_AR} cr  "${CMAKE_BINARY_DIR}/libserviceA.a"  ./*.o
+    COMMAND echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    COMMAND rm -rf          ${CMAKE_BINARY_DIR}/tmp &&  mkdir ${CMAKE_BINARY_DIR}/tmp
+    COMMAND cd              ${CMAKE_BINARY_DIR}/tmp &&  echo "Archive reconstruction in `pwd`"
+    COMMAND mv              ${CMAKE_BINARY_DIR}/libserviceA.a ${CMAKE_BINARY_DIR}/tmp/libserviceAUnbundled.a
+    COMMAND cd              ${CMAKE_BINARY_DIR}/tmp &&  ${CMAKE_AR} x ${CMAKE_BINARY_DIR}/tmp/libserviceAUnbundled.a
+    COMMAND cd              ${CMAKE_BINARY_DIR}/tmp &&  ${CMAKE_AR} x "${logger_LIB_DIRS}/liblogger.a"
+    COMMAND cd              ${CMAKE_BINARY_DIR}/tmp &&  ${CMAKE_AR} cr "${CMAKE_BINARY_DIR}/libserviceA.a"  ./*.o
     COMMAND ${CMAKE_RANLIB} ${CMAKE_BINARY_DIR}/libserviceA.a
-    COMMAND rm -rf ${CMAKE_BINARY_DIR}/tmp
-    COMMAND rm -f *.o
+#    COMMAND rm -rf ${CMAKE_BINARY_DIR}/tmp
+    COMMAND echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     DEPENDS serviceA
     )
 
