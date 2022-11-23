@@ -53,7 +53,7 @@ class LoggerConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("*.a", dst="lib")
+        self.copy("libserviceA.a", dst="lib")
         self.copy("*.h")
 
     def package_info(self):
