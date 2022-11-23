@@ -47,7 +47,7 @@ class LoggerConan(ConanFile):
         # print("package_folder-----------------------" + self.package_folder)
         # print("generators_folder-----------------------" + self.generators_folder)
         print("CMAKE_MODULE_PATH:-----------------------" + self.build_folder)
-        cmake.configure({'CMAKE_MODULE_PATH': self.build_folder})
+        cmake.configure({'CMAKE_MODULE_PATH': self.build_folder + ";" + self.install_folder})
         # cmake.configure({'CMAKE_MODULE_PATH': self.folders.generators_folder})
         cmake.configure()
         cmake.build()
